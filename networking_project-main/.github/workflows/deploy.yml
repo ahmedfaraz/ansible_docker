@@ -31,12 +31,12 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./Terraform
+        working-directory: ./ansible_docker/networking_project-main
 
       - name: Terraform Plan
         if: inputs.action == 'apply'
         run: terraform plan
-        working-directory: ./Terraform
+        working-directory: ./ansible_docker/networking_project-main
 
       - name: Terraform Apply or Destroy
         run: |
@@ -51,7 +51,7 @@ jobs:
         if: inputs.action == 'apply'
         id: get_ip
         run: |
-          cd ./Terraform
+          cd ./ansible_docker/networking_project-main
           echo "EC2_IP=$(terraform output -raw ec2_public_ip)" >> $GITHUB_ENV
 
       - name: Wait for EC2 to boot
