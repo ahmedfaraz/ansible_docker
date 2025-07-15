@@ -23,7 +23,7 @@
 
     - name: Clone Flask app repository
       git:
-        repo: 'https://github.com/ahmedfaraz/ansible_docker.git'
+        repo: 'https://github.com/ahmedfaraz/ansible_docker/tree/main/networking_project-main'
         dest: /home/ubuntu/networking_project
         version: main
 
