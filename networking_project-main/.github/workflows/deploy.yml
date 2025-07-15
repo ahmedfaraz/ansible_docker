@@ -45,7 +45,7 @@ jobs:
           else
             terraform apply -auto-approve
           fi
-        working-directory: ./Terraform
+        working-directory: ./ansible_docker/networking_project-main
 
       - name: Get EC2 Public IP from Terraform output
         if: inputs.action == 'apply'
