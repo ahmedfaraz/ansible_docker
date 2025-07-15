@@ -31,12 +31,12 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./Terraform
+        working-directory: ./networking_project-main/Terraform
 
       - name: Terraform Plan
         if: inputs.action == 'apply'
         run: terraform plan
-        working-directory: ./Terraform
+        working-directory: ./networking_project-main/Terraform
 
       - name: Terraform Apply or Destroy
         run: |
@@ -45,7 +45,7 @@ jobs:
           else
             terraform apply -auto-approve
           fi
-        working-directory: ./Terraform
+        working-directory: ./networking_project-main/Terraform
 
       - name: Get EC2 Public IP from Terraform output
         if: inputs.action == 'apply'
