@@ -37,7 +37,7 @@ variable "availability_zone" {
 variable "ami" {
   description = "AMI ID for the EC2 instance"
   type        = string
-  default     = "ami-0731becbf832f281e" 
+  default     = "ami-020cba7c55df1f615" 
 }
 
 variable "instance_type" {
@@ -49,7 +49,7 @@ variable "instance_type" {
 variable "key_name" {
   description = "Key pair name for EC2 SSH access"
   type        = string
-  default     = "ubuntu_vm"
+  default     = "RDP_Connect"
 }
 
 variable "user_data" {

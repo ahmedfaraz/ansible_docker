@@ -1,26 +1,32 @@
-from flask import Flask, render_template, request, redirect, url_for
+ffrom flask import Flask, render_template
+from datetime import datetime
+import pytz
 
 app = Flask(__name__)
 
-# In-memory mock "database"
-todos = []
-
 @app.route('/')
-def index():
-    return render_template('index.html', todos=todos)
-
-@app.route('/add', methods=['POST'])
-def add():
-    task = request.form.get('task')
-    if task:
-        todos.append(task)
-    return redirect(url_for('index'))
-
-@app.route('/delete/<int:task_id>')
-def delete(task_id):
-    if 0 <= task_id < len(todos):
-        todos.pop(task_id)
-    return redirect(url_for('index'))
+def world_time():
+    # Get current UTC time
+    utc_now = datetime.now(pytz.utc)
+    
+    # Define time zones to display
+    time_zones = {
+        'UTC': pytz.utc,
+        'New York': pytz.timezone('America/New_York'),
+        'London': pytz.timezone('Europe/London'),
+        'Tokyo': pytz.timezone('Asia/Tokyo'),
+        'Sydney': pytz.timezone('Australia/Sydney'),
+        'Dubai': pytz.timezone('Asia/Dubai'),
+        'Moscow': pytz.timezone('Europe/Moscow'),
+        'Beijing': pytz.timezone('Asia/Shanghai'),
+    }
+    
+    # Get times for each zone
+    times = {}
+    for city, tz in time_zones.items():
+        times[city] = utc_now.astimezone(tz).strftime('%Y-%m-%d %H:%M:%S')
+    
+    return render_template('world_time.html', times=times)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=True)

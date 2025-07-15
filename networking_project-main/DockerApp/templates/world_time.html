@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Time Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .time-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .time-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .time-entry:last-child {
+            border-bottom: none;
+        }
+        .city {
+            font-weight: bold;
+        }
+        .time {
+            color: #666;
+        }
+        .update-time {
+            text-align: right;
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>World Time Display</h1>
+    <div class="time-container">
+        {% for city, time in times.items() %}
+        <div class="time-entry">
+            <span class="city">{{ city }}</span>
+            <span class="time">{{ time }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="update-time">
+        Page loaded at: {{ times['UTC'] }} UTC
+    </div>
+</body>
+</html>
