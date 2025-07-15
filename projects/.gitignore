@@ -1,7 +1,0 @@
-# .gitignore
-terraform/.terraform/
-terraform/terraform.tfstate
-terraform/terraform.tfstate.backup
-terraform/.terraform.lock.hcl
-ansible/inventory/hosts.yml
-*.pem
